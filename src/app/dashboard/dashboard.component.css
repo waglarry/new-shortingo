@@ -1,0 +1,249 @@
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  margin-top: 5%;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3.125rem;
+  border: 1px solid #2245c2;
+  background: #fff;
+  width: 60%;
+  padding: 0.2rem;
+  margin: 1rem 0;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  width: calc(100% - 9rem);
+}
+
+.inputField {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  caret-color: #2245c2;
+  color: #2245c2;
+}
+
+.inputField::placeholder {
+  color: rgba(34, 69, 194, 0.5);
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.submitBtn {
+  border: none;
+  border-radius: 3.125rem;
+  background: #2245c2;
+  padding: 0.5rem;
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 130%; /* 1.63963rem */
+  width: 7rem;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.leftCol .totalLinks {
+  color: #000;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 2.275rem */
+}
+
+.rightCol {
+  width: 43%;
+}
+
+.searchGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3.125rem;
+  border: 1px solid #2245c2;
+  background: #fff;
+  padding: 0.2rem;
+}
+
+.searchGroup .inputField {
+  padding-left: 0.5rem;
+  color: #2245c2;
+  caret-color: #2245c2;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-style: normal;
+}
+
+.searchGroup .inputField::placeholder {
+  color: rgba(34, 69, 194, 0.39);
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-style: normal;
+  line-height: 130%; /* 1.50475rem */
+}
+
+.searchBtn {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 3rem;
+}
+
+#profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#profileContainer:hover {
+  border: 1px solid #2245c2;
+}
+
+.profile {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #2245c2;
+  color: #fff;
+}
+
+.inner-profile-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.inner-profile {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #2245c2;
+  color: #fff;
+}
+
+.dropdown-menu {
+  width: 20%;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.noLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+@media only screen and (max-width: 600px) {
+  .brand {
+    width: 100px;
+    margin-left: 1rem;
+  }
+
+  .topRow {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .formGroup {
+    width: 95%;
+    margin-top: 1rem;
+  }
+
+  .profileContainer {
+    display: flex;
+    align-self: flex-end;
+    margin-right: 1rem;
+    margin-top: -8%;
+  }
+
+  .bottomRow {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .rightCol {
+    display: flex;
+    align-self: flex-end;
+    width: 70%;
+  }
+
+  .searchGroupWidth {
+    width: 100%;
+    margin-right: 1rem;
+  }
+}
+
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 9999;
+}
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

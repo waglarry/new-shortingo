@@ -1,0 +1,62 @@
+<section>
+  <header>
+    <img routerLink="/" [src]="brandImageUrl" alt="" />
+  </header>
+  <main>
+    <div class="image">
+      <img [src]="registerIllusion" alt="Lock Illusion" />
+    </div>
+    <div class="formContanier">
+      <h3>Create your account</h3>
+      <p class="accountCheck">Already have an account? <a routerLink="/login">log In</a></p>
+      <h4>OR</h4>
+      <button type="button" class="btn">Sign up with Google</button>
+      <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1">Username</label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            placeholder="Enter Your Username"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter Your Email Address"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Enter Your Password"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleFormControlInput1">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            placeholder="Confirm Your Password"
+          />
+        </div>
+
+        <button type="submit" class="btn">{{isLoading ? 'Creating...' : 'Create account'}}</button>
+      </form>
+      <p class="footerContent">
+        By Signing up, you agree to <br />
+        shortingo's <a href="#">Terms of Service</a>,
+        <a href="#">Privacy Policy and <br> Acceptable Use Policy</a>
+      </p>
+    </div>
+  </main>
+</section>

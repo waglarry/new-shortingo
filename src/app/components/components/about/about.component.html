@@ -1,0 +1,26 @@
+<section id="features">
+  <h1 class="title">Our Features</h1>
+  <div class="feature-cards">
+    @for (item of features; track item) {
+        <div class="feature-card">
+            <img [src]="item.icon" alt="" />
+            <h3>{{item.title}}</h3>
+            <ul>
+              <li>{{item.content1}}</li>
+              <li>{{item.content2}}</li>
+              <li>{{item.content3}}</li>
+              <li>{{item.content4}}</li>
+            </ul>
+          </div>
+    }
+  </div>
+</section>
+
+<section id="about">
+  <h1 class="title">About Us</h1>
+  <p class="about-content">
+    We convert long and complex URLs into shorter and more manageable ones.
+    These shortened URLs are easier to share and can be used in various
+    contexts, such as social media posts, email messages, and text messages
+  </p>
+</section>

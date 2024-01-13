@@ -1,0 +1,120 @@
+<section>
+  <header>
+    <img class="brand" [src]="brandImageUrl" alt="Brand" />
+  </header>
+  <main>
+    <div class="topRow">
+      <form class="formGroup">
+        <div class="inputGroup">
+          <img [src]="linkIconUrl" alt="icon" />
+          <input
+            type="url"
+            name="inputUrl"
+            class="inputField"
+            placeholder="Paste your URL here..."
+            [(ngModel)]="model.ogLink"
+          />
+        </div>
+
+        <button type="submit" class="submitBtn" (click)="handleOnSubmit()">
+          {{ isLoading ? "Shortening..." : "Shorten URL" }}
+        </button>
+      </form>
+
+      <div class="profileContainer">
+        <button
+          id="profileContainer"
+          type="button"
+          class="btn dropdown-toggle dropdown-toggle-split"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span class="visually-hidden"> Toggle Dropdown</span>
+          <div type="button" class="profile">
+            {{ username?.charAt(0)?.toUpperCase() }}
+          </div>
+          {{ username }}
+        </button>
+        <ul class="dropdown-menu">
+          <div class="inner-profile-container">
+            <div type="button" class="inner-profile">
+              {{ username?.charAt(0)?.toUpperCase() }}
+            </div>
+            <div>
+              <span>{{ username }}</span>
+              <br />
+              <span>{{ email }}</span>
+            </div>
+          </div>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Payment method</a></li>
+          <li><a class="dropdown-item" href="#">Updrage</a></li>
+          <li><a class="dropdown-item" href="#">Account settings</a></li>
+          <li><a class="dropdown-item" href="#">Subscription</a></li>
+          <li><a class="dropdown-item" href="#">API</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" (click)="handleSignout()">Sign out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottomRow">
+      <div class="leftCol">
+        <label for="Links" class="totalLinks">
+          {{ urlsData.length }} Links
+        </label>
+
+        <button
+          type="button"
+          class="btn btn-light border border-primary-subtle btn-sm"
+        >
+          <i class="bi bi-calendar"></i>
+          Filter by created date
+        </button>
+        <button
+          type="button"
+          class="btn btn-light border border-primary-subtle btn-sm"
+          (click)="handleFilterUrlsByStared()"
+        >
+          <i
+            [className]="filterStaredUrls ? 'bi bi-star-fill' : 'bi bi-star'"
+          ></i>
+          Starred
+        </button>
+      </div>
+      <div class="rightCol">
+        <div class="searchGroupWidth">
+          <div class="searchGroup">
+            <input
+              class="inputField"
+              type="text"
+              [value]="searchTerm"
+              placeholder="Search for your URL"
+              (input)="handleFilterUrls($event)"
+            />
+            <button class="searchBtn"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <hr />
+
+  @if (gettingData) {
+  <!-- <app-loading></app-loading> -->
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+  } @else { @if (urlsData.length === 0) {
+  <div class="noLinks">
+    <h4>{{noDataTitle}}</h4>
+    <p>{{noDataSubTitle}}</p>
+  </div>
+  } @else {
+  <app-url-card></app-url-card>
+  } }
+</section>

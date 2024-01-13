@@ -1,0 +1,183 @@
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ccc;
+}
+
+header img {
+  cursor: pointer;
+  width: 150px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.image {
+  width: 400px;
+}
+
+.image img {
+  width: 100%;
+}
+
+.formContanier {
+  width: 42%;
+  text-align: center;
+}
+
+.formContanier h3 {
+  color: #000;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 2.1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.formContanier .accountCheck {
+  color: #7b7a7a;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.formContanier p a {
+  color: #1c08ff;
+}
+
+.formContanier h4 {
+  color: #969393;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formContanier h4::before,
+.formContanier h4::after {
+  content: "";
+  width: 40%;
+  height: 1px;
+  background: rgba(98, 97, 97, 0.5);
+  display: block;
+  opacity: 0.3;
+}
+
+.formContanier form {
+  text-align: left;
+}
+
+.formContanier form label {
+  color: #484747;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.formContanier form label:first-child {
+  margin-top: 0.5rem;
+}
+
+.formContanier form input {
+  padding: 0.7rem;
+}
+
+.formContanier form input::placeholder {
+  color: rgba(0, 0, 0, 0.66);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.keepCredentials {
+  display: flex;
+  justify-content: space-between;
+}
+
+.keepCredentials .characters {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.66);
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.14838rem;
+  height: 2.5rem;
+  background: #2245c2;
+  color: #fff;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.btn:hover {
+  background: #2245c2d3;
+}
+
+.footerContent {
+  color: #000;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1rem;
+}
+
+.footerContent a {
+  color: rgba(34, 69, 194, 0.9);
+}
+
+@media only screen and (max-width: 600px) {
+    .image {
+        display: none;
+    }
+
+    .formContanier, header {
+        width: 90%;
+        margin: 2rem auto;
+    }
+
+    .keepCredentials span {
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+    }
+
+    .keepCredentials .characters {
+        display: none;
+    }
+}

@@ -1,0 +1,176 @@
+@for (item of _dashboardData.urlsData; track item) {
+
+<div class="paper">
+  <div class="paperContent">
+    <div class="urlLogo">
+      <img src="../../assets/images/urlIcon.svg" alt="Url Logo" />
+    </div>
+    <div class="urlContent">
+      <h6>{{ item.title }}</h6>
+      <span>Short Link</span> <br />
+      <a
+        class="shortenedUrl"
+        #shortenedUrlElementRef
+        [href]="item.shortLink"
+        target="_blank"
+        title="Open the link in a new tab."
+      >
+        {{ item?.shortLink?.replace("tinyurl.com", "shortingo.ly") }}</a
+      >
+      <br />
+      <span>Original Link</span> <br />
+      <p>
+        {{
+          item.ogLink && item.ogLink.length > 80
+            ? item.ogLink.substring(0, 80) + "..."
+            : item.ogLink
+        }}
+      </p>
+      <p><i class="bi bi-calendar"></i> {{ item.date }}</p>
+    </div>
+  </div>
+  <div class="actions">
+    <button
+      class="copyBtn"
+      (click)="_dashboardData.handleCopyUrl(shortenedUrlElementRef, $index)"
+    >
+      <i class="bi bi-copy"></i>
+      {{ item.copied ? "copied" : "copy" }}
+    </button>
+
+    <div class="group">
+      <button
+        class="actionBtn"
+        (click)="_dashboardData.handleStarUrl(item._id)"
+      >
+        <i [className]="item.starred ? 'bi bi-star-fill' : 'bi bi-star'"></i>
+      </button>
+      <button
+        class="actionBtn"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        (click)="setModelId(item)"
+      >
+        <i class="bi bi-pencil-fill"></i>
+      </button>
+      <button
+        class="actionBtn"
+        (click)="_dashboardData.handleDeleteUrl(item._id)"
+      >
+        <i class="bi bi-trash-fill"></i>
+      </button>
+      <button
+        class="actionBtn"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        (click)="handleShare($index, shortenedUrlElementRef)"
+      >
+        <i class="bi bi-share-fill"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    @if (modalDialog === 'edit') {
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Edit Short URL
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Link Slug</label>
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              name="shortenedUrl"
+              [value]="item.shortLink"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Link Title</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              [value]="updateModel.title"
+              #inputValue
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Original Link</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="inputUrl"
+              [value]="item.ogLink"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-start">
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="modal-button"
+          (click)="
+            updateModel.modelId &&
+              _dashboardData.handleUpdateUrl(
+                updateModel.modelId,
+                inputValue.value
+              )
+          "
+        >
+          SAVE
+        </button>
+      </div>
+    </div>
+    } @else {
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          class="copyBtn"
+          (click)="
+            _dashboardData.handleCopyUrl(shortenedUrlElementRef, modalIndex)
+          "
+        >
+          <i class="bi bi-copy"></i>
+          {{ item.copied ? "copied" : "copy" }}
+        </button>
+      </div>
+      <div class="modal-body" id="socialMedia">
+        @for (item of mediaPlatforms; track item) { @if (url !== null || url !==
+        undefined) {
+        <a class="media" [href]="item.url" target="_blank">
+          <i [className]="'bi bi-' + item.icon" [style.color]="item.color"></i>
+          {{ item.name }}
+        </a>
+        } }
+      </div>
+    </div>
+    }
+  </div>
+</div>
+}

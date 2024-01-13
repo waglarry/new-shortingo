@@ -1,0 +1,26 @@
+<section id="pricing">
+  <h1 class="title">Pricing</h1>
+  <div class="card-container">
+    @for (item of pricing; track item) {
+        <div class="pricing-card">
+            <h3 class="card-title">{{item.title}}</h3>
+            <h1 class="price"><span>$</span>{{item.price}}</h1>
+            <div class="group">
+              <div class="group-row">
+                <img src="../../../assets/icons/checked.svg" alt="checked" />
+                <span>{{item.content1}}</span>
+              </div>
+              <div class="group-row">
+                <img src="../../../assets/icons/checked.svg" alt="checked" />
+                <span>{{item.content2}}</span>
+              </div>
+              <div class="group-row">
+                <img src="../../../assets/icons/checked.svg" alt="checked" />
+                <span>{{item.content3}}</span>
+              </div>
+            </div>
+            <button>{{item.action}}</button>
+          </div>
+    }
+  </div>
+</section>

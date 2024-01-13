@@ -1,0 +1,29 @@
+<section>
+  <header>
+    <img routerLink="/" src="../../../assets/images/Shortingo.svg" alt="" />
+  </header>
+  <main>
+    <div class="image">
+      <img src="../../../assets/images/verify-otp.svg" alt="Lock Illusion" />
+    </div>
+    <div class="formContanier">
+      <h3>Verify OTP</h3>
+      <p class="subtitle">Please enter 4 digit code sent to your email</p>
+
+            <!-- OTP Input -->
+      <div class="form-group">
+        <input type="text" class="form-control text-center" maxlength="1" pattern="\d*" inputmode="numeric" placeholder="" required>
+        <input type="text" class="form-control text-center" maxlength="1" pattern="\d*" inputmode="numeric" placeholder="" required>
+        <input type="text" class="form-control text-center" maxlength="1" pattern="\d*" inputmode="numeric" placeholder="" required>
+        <input type="text" class="form-control text-center" maxlength="1" pattern="\d*" inputmode="numeric" placeholder="" required>
+      </div>
+      
+      <p class="footerContent">
+        If you didn’t receive?
+        <a href="#">Resend</a>
+      </p>
+
+      <button class="btn" routerLink="/create-new-password">Verify</button>
+    </div>
+  </main>
+</section>

@@ -1,0 +1,84 @@
+section {
+    padding: 6rem 0 8rem;
+}
+
+.title {
+  color: #000000;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 3rem 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pricing-card {
+  border-radius: 6.479px;
+  background: #fff;
+  box-shadow: 0px 6.479px 6.479px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  width: 300px;
+  height: 400px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  flex-shrink: 0;
+}
+
+.pricing-card .card-title {
+  color: #2245c2;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pricing-card .price span {
+  font-size: 16px;
+}
+
+.pricing-card .group .group-row {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-card .group .group-row span {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 19.438px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pricing-card button {
+  border-radius: 6.479px;
+  background: #2245c2;
+  border: 1px solid #2245c2;
+  outline: none;
+  width: 80%;
+  height: 40px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pricing-card button:hover {
+    background: none;
+    color: #2245c2;
+}

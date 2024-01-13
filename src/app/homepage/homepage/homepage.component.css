@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 5% auto;
+}
+
+.leftCol h1 {
+  color: #1e1d1d;
+  font-family: "Roboto", sans-serif;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.leftCol h1 span {
+  color: #2245c2;
+  font-family: "Irish Grover", sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.leftCol p {
+  color: #1e1d1d;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 100;
+  margin: 2rem 0;
+}
+
+.rightCol img {
+  width: 450px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.buttonGroup button:first-child {
+  background: #2245c2;
+  color: #ffffff;
+}
+
+.buttonGroup button {
+  border-radius: 5.6px;
+  border: 1.4px solid #2245c2;
+  background: #ffffff;
+  color: #2245c2;
+  width: 150px;
+  height: 45px;
+  text-align: center;
+}
+
+.buttonGroup button:last-child:hover {
+  background: #2245c2;
+  color: #ffffff;
+}

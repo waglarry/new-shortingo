@@ -1,0 +1,6 @@
+.brand {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
