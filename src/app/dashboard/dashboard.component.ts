@@ -134,6 +134,8 @@ export class DashboardComponent implements OnInit {
           } else if (error?.status === 403) {
             alert('Session expired, re-login to connect to the server!');
             this._router.navigate(['login']);
+          } else {
+            alert('Network issue, please check your internet and try again.')
           }
         },
       });
