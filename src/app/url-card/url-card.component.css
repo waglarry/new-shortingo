@@ -15,7 +15,7 @@
 .paperContent .urlContent span {
   color: #bfbfbf;
   text-align: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   line-height: 130%; /* 1.96719rem */
 }
@@ -23,7 +23,7 @@
 .shortenedUrl {
   color: #2245c2;
   text-align: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   text-decoration: none;
   line-height: 130%; /* 1.96719rem */

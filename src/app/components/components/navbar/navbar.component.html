@@ -1,14 +1,21 @@
 <nav class="navBar">
-  <div class="linksGroup">
-    <app-brand></app-brand>
-    <ul class="navLinks">
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#about">About Us</a></li>
-    </ul>
+
+  <app-brand class="mobileLogo"></app-brand>
+
+  <div class="responsiveNav" [class.hidden]="!isNavVisible">
+    <div class="linksGroup">
+      <app-brand class="desktopLogo"></app-brand>
+      <ul class="navLinks">
+        <li><a href="#pricing" (click)="handleHamburgerClick()">Pricing</a></li>
+        <li><a href="#features" (click)="handleHamburgerClick()">Features</a></li>
+        <li><a href="#about" (click)="handleHamburgerClick()">About Us</a></li>
+      </ul>
+    </div>
+    <div class="buttonGroup">
+      <button routerLink="/login">Login</button>
+      <button routerLink="/register">Get Started</button>
+    </div>
   </div>
-  <div class="buttonGroup">
-    <button routerLink="/login">Login</button>
-    <button routerLink="/register">Get Started</button>
-  </div>
+
+  <button class="hamburger" (click)="handleHamburgerClick()"><i [style.color]="'#2245c2'" class="bi bi-list"></i></button>
 </nav>

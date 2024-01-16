@@ -16,8 +16,10 @@
 
 .feature-cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  gap: 2rem;
 }
 
 .feature-card {
@@ -81,4 +83,22 @@
   font-size: 21px;
   width: 50%;
   margin: 0 auto;
+}
+
+.mobile-pricing {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .feature-card {
+    width: 300px;
+  }
+
+  .about-content {
+    width: 80%;
+  }
+
+  .mobile-pricing {
+    display: block;
+  }
 }

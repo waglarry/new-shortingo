@@ -1,20 +1,23 @@
 .navBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: #f4f6fa;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
   width: 100%;
   height: 80px;
-  padding: 0 5rem;
   position: sticky;
   top: 0;
+}
+
+.responsiveNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .linksGroup {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  padding-left: 5rem;
 }
 
 .navLinks {
@@ -39,6 +42,7 @@
 .buttonGroup {
   display: flex;
   gap: 1rem;
+  padding-right: 5rem;
 }
 
 .buttonGroup button:first-child {
@@ -67,4 +71,96 @@
 .buttonGroup button:last-child:hover {
   background: #2245c2;
   color: #ffffff;
+}
+
+.mobileLogo, .hamburger {
+  display: none;
+}
+
+.desktopLogo {
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .navBar {
+    background: transparent;
+    box-shadow: none;
+  } 
+
+  .mobileLogo, .hamburger {
+    display: block;
+  } 
+
+  .mobileLogo {
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+  }
+
+  .hamburger {
+    position: absolute;
+    right: 1rem;
+    top: .5rem;
+    background: none;
+    border: none;
+    outline: none;
+
+    font-size: 40px;
+    font-weight: 900;
+  }
+
+  .desktopLogo {
+    display: none;
+  }
+
+  .responsiveNav {
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.7s ease-in-out;
+  }
+
+  .responsiveNav.hidden {
+    top: -100rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column-reverse;
+    width: 75%;
+    padding-left: 5rem;
+  }
+
+  .buttonGroup button {
+    padding: 5px 10px;
+  }
+  .buttonGroup button:last-child {
+    background: #2245c2;
+    color: #ffffff;
+  }
+
+  .buttonGroup button:first-child {
+    border: 2px solid #2245c2;
+    color: #000000;
+  }
+  .linksGroup {
+    width: 75%;
+    text-align: center;
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navLinks li a {
+    font-weight: 700;
+    font-size: 20px;
+  }
 }

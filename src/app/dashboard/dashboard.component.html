@@ -43,7 +43,13 @@
             <div>
               <span>{{ username }}</span>
               <br />
-              <span>{{ email }}</span>
+              <span>
+                {{
+                  email && email.length > 20
+                    ? email.substring(0, 20) + "..."
+                    : email
+                }}
+              </span>
             </div>
           </div>
           <li><hr class="dropdown-divider" /></li>
@@ -74,12 +80,14 @@
           Filter by created date
         </button>
         <button
+          [style.color]="filterStaredUrls ? '#2245c2' : '#000'"
           type="button"
           class="btn btn-light border border-primary-subtle btn-sm"
           (click)="handleFilterUrlsByStared()"
         >
           <i
-            [className]="filterStaredUrls ? 'bi bi-star-fill' : 'bi bi-star'"
+            [className]="filterStaredUrls ? 'bi bi-star-fill' : 'bi bi-star-fill'"
+            [style.color]="filterStaredUrls ? '#2245c2' : '#BABABA'"
           ></i>
           Starred
         </button>
@@ -104,15 +112,14 @@
   <hr />
 
   @if (gettingData) {
-  <!-- <app-loading></app-loading> -->
   <div class="loading-screen">
     <div class="loader"></div>
     <p>Loading...</p>
   </div>
   } @else { @if (urlsData.length === 0) {
   <div class="noLinks">
-    <h4>{{noDataTitle}}</h4>
-    <p>{{noDataSubTitle}}</p>
+    <h4>{{ noDataTitle }}</h4>
+    <p>{{ noDataSubTitle }}</p>
   </div>
   } @else {
   <app-url-card></app-url-card>

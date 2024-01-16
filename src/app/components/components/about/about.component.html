@@ -2,20 +2,20 @@
   <h1 class="title">Our Features</h1>
   <div class="feature-cards">
     @for (item of features; track item) {
-        <div class="feature-card">
-            <img [src]="item.icon" alt="" />
-            <h3>{{item.title}}</h3>
-            <ul>
-              <li>{{item.content1}}</li>
-              <li>{{item.content2}}</li>
-              <li>{{item.content3}}</li>
-              <li>{{item.content4}}</li>
-            </ul>
-          </div>
+    <div class="feature-card">
+      <img [src]="item.icon" alt="" />
+      <h3>{{ item.title }}</h3>
+      <ul>
+        <li>{{ item.content1 }}</li>
+        <li>{{ item.content2 }}</li>
+        <li>{{ item.content3 }}</li>
+        <li>{{ item.content4 }}</li>
+      </ul>
+    </div>
     }
   </div>
 </section>
-
+<app-pricing class="mobile-pricing"></app-pricing>
 <section id="about">
   <h1 class="title">About Us</h1>
   <p class="about-content">

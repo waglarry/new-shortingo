@@ -14,12 +14,8 @@
   font-weight: 700;
 }
 
-.leftCol h1 span {
-  color: #2245c2;
-  font-family: "Irish Grover", sans-serif;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
+.leftCol h1 img {
+  width: 100px;
 }
 
 .leftCol p {
@@ -58,4 +54,39 @@
 .buttonGroup button:last-child:hover {
   background: #2245c2;
   color: #ffffff;
+}
+
+.mobile-pricing {
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column-reverse;
+    margin: 5% auto 10rem;
+  }
+
+  .rightCol img {
+    width: 350px;
+  }
+
+  .leftCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftCol h1 {
+    display: none;
+  }
+
+  .leftCol p {
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .mobile-pricing {
+    display: none;
+  }
 }
