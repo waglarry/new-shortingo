@@ -193,6 +193,10 @@ header {
     margin-top: 1rem;
   }
 
+  .submitBtn {
+    font-size: .8rem;
+  }
+
   .profileContainer {
     display: flex;
     align-self: flex-end;
