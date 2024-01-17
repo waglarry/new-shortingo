@@ -1,7 +1,7 @@
 import { Component, WritableSignal, inject, signal } from '@angular/core';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
-import { MediaPlaforms, UpdateDetails } from '../../interfaces/url-card';
+import { MediaPlaforms, UpdateDetails } from '../../../interfaces/url-card';
 
 @Component({
   selector: 'app-url-card',

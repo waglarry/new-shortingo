@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgTinyUrlService } from 'ng-tiny-url';
 import { ShortenedUrlsService } from '../services/shortened-urls.service';
-import { UrlCardComponent } from '../url-card/url-card.component';
+import { UrlCardComponent } from '../components/url-card/url-card.component';
 import { Router } from '@angular/router';
 import { URLData } from '../../interfaces/dashboard';
 
@@ -159,7 +159,7 @@ export class DashboardComponent implements OnInit {
       next: (response) => {
         alert(response.message);
       },
-      error: (error) => {
+      error: () => {
         alert('Network issue, please try again!');
       },
       complete: () => {
