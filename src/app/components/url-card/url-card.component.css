@@ -20,6 +20,12 @@
   line-height: 130%; /* 1.96719rem */
 }
 
+.original-link {
+  white-space: nowrap;       /* Prevents the text from wrapping to the next line */
+  overflow: hidden;          /* Hides any content that overflows the container */
+  text-overflow: ellipsis;   /* Displays an ellipsis (...) for overflowed content */
+}
+
 .shortenedUrl {
   color: #2245c2;
   text-align: center;
@@ -102,6 +108,16 @@
 
   .urlLogo img {
     width: 30px;
+  }
+
+  .urlContent {
+    width: 85%;
+  }
+
+  .paper .paperContent {
+    display: flex;
+    gap: 1rem;
+    max-width: 100%;
   }
 
   .actions {
