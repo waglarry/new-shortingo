@@ -54,7 +54,7 @@
           </div>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" href="#">Payment method</a></li>
-          <li><a class="dropdown-item" href="#">Updrage</a></li>
+          <li><a class="dropdown-item" href="#">Upgrade</a></li>
           <li><a class="dropdown-item" href="#">Account settings</a></li>
           <li><a class="dropdown-item" href="#">Subscription</a></li>
           <li><a class="dropdown-item" href="#">API</a></li>
@@ -86,7 +86,9 @@
           (click)="handleFilterUrlsByStared()"
         >
           <i
-            [className]="filterStaredUrls ? 'bi bi-star-fill' : 'bi bi-star-fill'"
+            [className]="
+              filterStaredUrls ? 'bi bi-star-fill' : 'bi bi-star-fill'
+            "
             [style.color]="filterStaredUrls ? '#2245c2' : '#BABABA'"
           ></i>
           Starred
