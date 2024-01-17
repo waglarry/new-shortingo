@@ -1,5 +1,4 @@
 <nav class="navBar">
-
   <app-brand class="mobileLogo"></app-brand>
 
   <div class="responsiveNav" [class.hidden]="!isNavVisible">
@@ -7,7 +6,9 @@
       <app-brand class="desktopLogo"></app-brand>
       <ul class="navLinks">
         <li><a href="#pricing" (click)="handleHamburgerClick()">Pricing</a></li>
-        <li><a href="#features" (click)="handleHamburgerClick()">Features</a></li>
+        <li>
+          <a href="#features" (click)="handleHamburgerClick()">Features</a>
+        </li>
         <li><a href="#about" (click)="handleHamburgerClick()">About Us</a></li>
       </ul>
     </div>
@@ -17,5 +18,10 @@
     </div>
   </div>
 
-  <button class="hamburger" (click)="handleHamburgerClick()"><i [style.color]="'#2245c2'" class="bi bi-list"></i></button>
+  <button class="hamburger" (click)="handleHamburgerClick()">
+    <i
+      [style.color]="'#2245c2'"
+      [className]="!isNavVisible ? 'bi bi-list' : 'bi bi-x-lg'"
+    ></i>
+  </button>
 </nav>
