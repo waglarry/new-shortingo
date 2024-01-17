@@ -4,16 +4,7 @@ import { NgTinyUrlService } from 'ng-tiny-url';
 import { ShortenedUrlsService } from '../services/shortened-urls.service';
 import { UrlCardComponent } from '../url-card/url-card.component';
 import { Router } from '@angular/router';
-
-export interface URLData {
-  _id: string;
-  title: string;
-  shortLink: string;
-  ogLink: string;
-  starred: boolean;
-  date: string;
-  copied?: boolean;
-}
+import { URLData } from '../../interfaces/dashboard';
 
 @Component({
   selector: 'app-dashboard',
@@ -135,7 +126,7 @@ export class DashboardComponent implements OnInit {
             alert('Session expired, re-login to connect to the server!');
             this._router.navigate(['login']);
           } else {
-            alert('Network issue, please check your internet and try again.')
+            alert('Network issue, please check your internet and try again.');
           }
         },
       });

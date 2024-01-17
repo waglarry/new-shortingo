@@ -1,18 +1,8 @@
 import { Component, WritableSignal, inject, signal } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { MediaPlaforms, UpdateDetails } from '../../interfaces/url-card';
 
-interface UpdateDetails {
-  modelId?: string;
-  title: string;
-}
-
-interface MediaPlaforms {
-  name: string;
-  icon: string;
-  color: string;
-  url: string;
-}
 @Component({
   selector: 'app-url-card',
   standalone: true,
