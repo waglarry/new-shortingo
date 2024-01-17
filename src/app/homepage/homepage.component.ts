@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../components/components/navbar/navbar.component';
-import { FooterComponent } from '../../components/components/footer/footer.component';
-import { AboutComponent } from '../../components/components/about/about.component';
-import { PricingComponent } from '../../components/components/pricing/pricing.component';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from '../components/homepage/navbar/navbar.component';
+import { FooterComponent } from '../components/homepage/footer/footer.component';
+import { AboutComponent } from '../components/homepage/about/about.component';
+import { PricingComponent } from '../components/homepage/pricing/pricing.component';
 
 @Component({
   selector: 'app-homepage',
