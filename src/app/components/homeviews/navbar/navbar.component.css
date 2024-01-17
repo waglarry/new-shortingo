@@ -102,7 +102,7 @@
 
   .hamburger {
     position: absolute;
-    right: 1rem;
+    right: 0;
     top: 0.5rem;
     background: none;
     border: none;
