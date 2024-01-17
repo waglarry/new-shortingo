@@ -137,7 +137,7 @@
   .buttonGroup {
     flex-direction: column-reverse;
     width: 100%;
-    padding-left: 7rem;
+    padding-left: 6rem;
   }
 
   .buttonGroup button {
