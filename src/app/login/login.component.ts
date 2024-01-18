@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { RememberMeService } from '../services/rememberme.service';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +20,32 @@ export class LoginComponent {
   constructor(
     private _builder: FormBuilder,
     private _authService: AuthService,
+    private _rememberMeService: RememberMeService,
     private router: Router
   ) {}
+
+  ngOnInit() {
+    // Retrieve stored credentials and set them in the form
+    const storedCredentials = this._rememberMeService.getStoredCredentials();
+    if (storedCredentials) {
+      this.loginForm.patchValue(storedCredentials);
+    }
+
+    // Check if the 'rememberMe' control exists before subscribing to changes
+    const rememberMeControl = this.loginForm.get('rememberMe');
+
+    if (rememberMeControl) {
+      rememberMeControl.valueChanges.subscribe((value) => {
+        this._rememberMeService.setRememberMe(value);
+      });
+    }
+  }
 
   brandImageUrl: string = 'assets/images/Shortingo.svg';
   loginIllusion: string = 'assets/images/loginIllusion.svg';
   isLoading: boolean = false;
 
-  loginForm = this._builder.group({
+  loginForm: FormGroup = this._builder.group({
     email: this._builder.control(
       '',
       Validators.compose([Validators.required, Validators.email])
@@ -30,6 +54,7 @@ export class LoginComponent {
       '',
       Validators.compose([Validators.required, Validators.minLength(8)])
     ),
+    rememberMe: [this._rememberMeService.getRememberMe()],
   });
 
   handleLogin() {
@@ -40,6 +65,7 @@ export class LoginComponent {
       this._authService.login(formData).subscribe({
         next: (response: any) => {
           this.isLoading = false;
+          this._rememberMeService.saveCredentials(formData);
           alert(response.message);
           this.router.navigate(['dashboard']);
           sessionStorage.setItem('token', response.token);
