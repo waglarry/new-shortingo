@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
     this.urlsData?.reverse();
   }
 
-  handleOnSubmit() {
+  handleOnSubmit(): void {
     this.isLoading = true;
     if (this.model.ogLink !== '') {
       this._ngTinyUrlService.shorten(this.model.ogLink).subscribe({
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  getSavedUrls() {
+  getSavedUrls(): void {
     if (this.userId !== null) {
       this.gettingData = true;
       this._saveUrl.getAllUserUrls(this.userId).subscribe({
@@ -133,7 +133,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  handleFilterUrls(event: any) {
+  handleFilterUrls(event: any): void {
     this.searchTerm = event.target.value;
 
     let searchResult = this.urlsData.filter(
@@ -154,7 +154,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  handleDeleteUrl(id: string) {
+  handleDeleteUrl(id: string): void {
     this._saveUrl.deleteUrl(id).subscribe({
       next: (response) => {
         alert(response.message);
@@ -168,7 +168,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  handleUpdateUrl(id: string, inputValue: string) {
+  handleUpdateUrl(id: string, inputValue: string): void {
     let validInputValue =
       inputValue !== undefined && inputValue !== null && inputValue !== ''
         ? inputValue
@@ -186,7 +186,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  handleCopyUrl(shortenedUrlElementRef: any, index: number) {
+  handleCopyUrl(shortenedUrlElementRef: any, index: number): void {
     let inputElement = document.createElement('input');
     inputElement.setAttribute('type', 'text');
     inputElement.setAttribute('value', shortenedUrlElementRef?.innerHTML);
@@ -206,7 +206,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  handleStarUrl(id: string) {
+  handleStarUrl(id: string): void {
     this.model.starred = !this.model.starred;
 
     const updateObject = { starred: this.model.starred };
@@ -221,7 +221,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  handleFilterUrlsByStared() {
+  handleFilterUrlsByStared(): void {
     this.filterStaredUrls = !this.filterStaredUrls;
     let urlsDataCopied = [...this.urlsData];
 
@@ -238,7 +238,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  handleSignout() {
+  handleSignout(): void {
     sessionStorage.removeItem('username');
     this._router.navigate(['login']);
   }
