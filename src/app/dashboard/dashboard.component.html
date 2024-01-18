@@ -16,7 +16,7 @@
           />
         </div>
 
-        <button type="submit" class="submitBtn" (click)="handleOnSubmit()">
+        <button type="submit" class="submitBtn" [disabled]="isLoading" (click)="handleOnSubmit()">
           {{ isLoading ? "Shortening..." : "Shorten URL" }}
         </button>
       </form>
