@@ -12,17 +12,20 @@ import { environment } from '../../../../environments/environment.development';
 export class FooterComponent {
   public sendEmail(e: Event) {
     e.preventDefault();
+
+    const formElement = e.target as HTMLFormElement;
     emailjs
       .sendForm(
         `${environment.SERVICE_ID}`,
         `${environment.TEMPLATE_ID}`,
-        e.target as HTMLFormElement,
+        formElement,
         `${environment.PUBLIC_KEY}`
       )
       .then(
         (result: EmailJSResponseStatus) => {
           alert('Message is successfully sent!');
           console.log(result.text);
+          formElement.reset();
         },
         (error) => {
           console.log(error.text);
