@@ -20,6 +20,13 @@
             class="form-control"
             placeholder="Enter Your Username"
           />
+          @if (registerForm.get('Username')?.hasError('required') &&
+          registerForm.get('Username')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Username is required.
+          </span>
+          }
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1">Email address</label>
@@ -29,6 +36,19 @@
             formControlName="email"
             placeholder="Enter Your Email Address"
           />
+          @if (registerForm.get('email')?.hasError('required') &&
+          registerForm.get('email')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Email is required.
+          </span>
+          } @if (registerForm.get('email')?.hasError('email') &&
+          registerForm.get('email')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Email is required.
+          </span>
+          }
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1">Password</label>
@@ -38,6 +58,19 @@
             formControlName="password"
             placeholder="Enter Your Password"
           />
+          @if (registerForm.get('password')?.hasError('required') &&
+          registerForm.get('password')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Password is required.
+          </span>
+          } @if (registerForm.get('password')?.hasError('minlength') &&
+          registerForm.get('password')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Password must be at least 8 characters long.
+          </span>
+          }
         </div>
 
         <div class="mb-3">
@@ -48,9 +81,22 @@
             formControlName="confirmPassword"
             placeholder="Confirm Your Password"
           />
+          @if (registerForm.get('confirmPassword')?.hasError('required') &&
+          registerForm.get('confirmPassword')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Password is required.
+          </span>
+          } @if (registerForm.get('confirmPassword')?.hasError('minlength') &&
+          registerForm.get('confirmPassword')?.touched) {
+          <span class="error-message">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Password must be at least 8 characters long.
+          </span>
+          }
         </div>
 
-        <button type="submit" class="btn">{{isLoading ? 'Creating...' : 'Create account'}}</button>
+        <button type="submit" [disabled]="isLoading" class="btn">{{isLoading ? 'Creating...' : 'Create account'}}</button>
       </form>
       <p class="footerContent">
         By Signing up, you agree to <br />
