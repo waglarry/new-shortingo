@@ -57,16 +57,25 @@ export class LoginComponent {
     rememberMe: [this._rememberMeService.getRememberMe()],
   });
 
+  handleRememberMeChange(rememberMeValue: boolean): void {
+    if (!rememberMeValue) {
+      this._rememberMeService.deleteStoredCredentials();
+    } else {
+      this._rememberMeService.saveCredentials(this.loginForm.value);
+    }
+  }
+
   handleLogin() {
     this.isLoading = true;
     let formData = this.loginForm.value;
-
+    
     if (this.loginForm.valid) {
       this._authService.login(formData).subscribe({
         next: (response: any) => {
           this.isLoading = false;
-          this._rememberMeService.saveCredentials(formData);
+          this.handleRememberMeChange(formData.rememberMe);    
           alert(response.message);
+          
           this.router.navigate(['dashboard']);
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
