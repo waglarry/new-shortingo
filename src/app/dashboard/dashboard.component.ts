@@ -240,6 +240,7 @@ export class DashboardComponent implements OnInit {
 
   handleSignout(): void {
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('token');
     this._router.navigate(['login']);
   }
 }
