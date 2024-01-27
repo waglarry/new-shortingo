@@ -8,6 +8,7 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { RememberMeService } from '../services/rememberme.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent {
     private _builder: FormBuilder,
     private _authService: AuthService,
     private _rememberMeService: RememberMeService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -74,7 +76,7 @@ export class LoginComponent {
         next: (response: any) => {
           this.isLoading = false;
           this.handleRememberMeChange(formData.rememberMe);    
-          alert(response.message);
+          this.toastr.success(response.message);
           
           this.router.navigate(['dashboard']);
           sessionStorage.setItem('token', response.token);
@@ -86,19 +88,19 @@ export class LoginComponent {
           this.isLoading = false;
 
           if (error?.status === 401) {
-            alert('Email or Password is wrong!');
+            this.toastr.error('Email or Password is wrong!');
           } else if (error?.status === 400) {
-            alert(error?.error?.message);
+            this.toastr.error(error?.error?.message);
           } else if (error?.status === 0) {
-            alert('Something went wrong, check your internet and try again!');
+            this.toastr.error('Something went wrong, check your internet and try again!');
           } else {
-            alert(error?.message);
+            this.toastr.error(error?.message);
           }
         },
       });
     } else {
       this.isLoading = false;
-      alert('Invalid Credentials!');
+      this.toastr.error('Invalid Credentials!');
     }
   }
 }
