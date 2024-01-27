@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CommonModule,
     RouterOutlet,
     HttpClientModule,
-    DashboardComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
