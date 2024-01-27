@@ -5,6 +5,7 @@ import { ShortenedUrlsService } from '../services/shortened-urls.service';
 import { UrlCardComponent } from '../components/url-card/url-card.component';
 import { Router } from '@angular/router';
 import { URLData } from '../../interfaces/dashboard';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,8 @@ export class DashboardComponent implements OnInit {
   linkIconUrl: string = 'assets/images/link.svg';
 
   currentDate = new Date();
+
+  // Destructure date format.
   date: string = `${this.currentDate.getUTCFullYear()}-${(
     this.currentDate.getUTCMonth() + 1
   )
@@ -66,7 +69,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _ngTinyUrlService: NgTinyUrlService,
     private _saveUrl: ShortenedUrlsService,
-    private _router: Router
+    private _router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -87,20 +91,21 @@ export class DashboardComponent implements OnInit {
             next: () => {
               this.model.ogLink = '';
               this.getSavedUrls();
+              this.toastr.success("Successfully Shortend and Saved!")
             },
             error: (error) => {
-              console.log(error.message);
+              this.toastr.error(error.message);
             },
           });
         },
         error: () => {
           this.isLoading = false;
-          alert('Something went wrong! Please, check your url and try again.');
+          this.toastr.error('Something went wrong! Please, check your url and try again.');
         },
       });
     } else {
       this.isLoading = false;
-      alert('Please enter or paste a URL');
+      this.toastr.error('Please enter or paste a URL');
     }
   }
 
@@ -119,14 +124,14 @@ export class DashboardComponent implements OnInit {
           this.gettingData = false;
 
           if (error?.status === 404) {
-            alert(
+            this.toastr.error(
               'Something went wrong, please check your internet and try again!'
             );
           } else if (error?.status === 403) {
-            alert('Session expired, re-login to connect to the server!');
+            this.toastr.error('Session expired, re-login to connect to the server!');
             this._router.navigate(['login']);
           } else {
-            alert('Network issue, please check your internet and try again.');
+            this.toastr.error('Network issue, please check your internet and try again.');
           }
         },
       });
@@ -157,10 +162,10 @@ export class DashboardComponent implements OnInit {
   handleDeleteUrl(id: string): void {
     this._saveUrl.deleteUrl(id).subscribe({
       next: (response) => {
-        alert(response.message);
+        this.toastr.success(response.message);
       },
       error: () => {
-        alert('Network issue, please try again!');
+        this.toastr.error('Network issue, please try again!');
       },
       complete: () => {
         this.getSavedUrls();
@@ -179,9 +184,10 @@ export class DashboardComponent implements OnInit {
     this._saveUrl.updateUrl(id, updateObject).subscribe({
       next: () => {
         this.getSavedUrls();
+        this.toastr.success("Successfully Updated!")
       },
       error: (error) => {
-        console.log(error.message);
+        this.toastr.error(error.message);
       },
     });
   }
@@ -202,7 +208,7 @@ export class DashboardComponent implements OnInit {
       }, 2000);
     } catch (error) {
       this.urlsData[index].copied = false;
-      alert('An error occurred while copying. Please, try again!');
+      this.toastr.error('An error occurred while copying. Please, try again!');
     }
   }
 
@@ -216,7 +222,7 @@ export class DashboardComponent implements OnInit {
         this.getSavedUrls();
       },
       error: () => {
-        alert('Network issue, please try again!');
+        this.toastr.error('Network issue, please try again!');
       },
     });
   }
