@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent {
   constructor(
     private _builder: FormBuilder,
     private _authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   brandImageUrl: string = 'assets/images/Shortingo.svg';
@@ -42,29 +44,32 @@ export class RegisterComponent {
     let formData = this.registerForm.value;
     if (this.registerForm.valid) {
       if (formData.password !== formData.confirmPassword) {
-        alert('Password do not match!');
+        this.toastr.error('Password do not match!');
       } else {
         this._authService.register(formData).subscribe({
           next: () => {
             this.isLoading = false;
             this.router.navigate(['login']);
+            this.toastr.success('Account is successfully created!');
           },
           error: (error) => {
             this.isLoading = false;
 
             if (error?.status === 400) {
-              alert(error?.error?.message);
+              this.toastr.error(error?.error?.message);
             } else if (error?.status === 0) {
-              alert('Something went wrong, check your internet and try again!');
+              this.toastr.error(
+                'Something went wrong, check your internet and try again!'
+              );
             } else {
-              alert(error?.message);
+              this.toastr.error(error?.message);
             }
           },
         });
       }
     } else {
       this.isLoading = false;
-      alert('Invalid Credentials!');
+      this.toastr.error('Invalid Credentials!');
     }
   }
 }
