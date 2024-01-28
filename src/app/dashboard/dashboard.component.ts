@@ -128,12 +128,12 @@ export class DashboardComponent implements OnInit {
               'Something went wrong, please check your internet and try again!'
             );
           } else if (error?.status === 403) {
-            this.toastr.error('Session expired, re-login to connect to the server!');
+            this.toastr.error('Session expired, reload the page and login to connect to the server!');
             this._router.navigate(['login']);
           } else {
             this.toastr.error('Network issue, please check your internet and try again.');
           }
-        },
+        }
       });
     }
   }
